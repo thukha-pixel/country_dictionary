@@ -1,5 +1,7 @@
 # country_dictionary_test
 
+https://github.com/thukha-pixel/country_dictionary/blob/master/images/teaser.png
+
 A new Flutter project.
 
 ## Getting Started
