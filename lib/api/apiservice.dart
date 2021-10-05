@@ -9,7 +9,8 @@ abstract class ApiService {
   factory ApiService(Dio dio) = _ApiService;
 
   @GET('all')
-  Future<List<Country>> getCountries();
+  Future<List<Country>> getCountries(@DioOptions() Options options);
   @GET('name/{name}?fullText=true')
-  Future<List<Detail>> getDetail(@Path() String name);
+  Future<List<Detail>> getDetail(
+      @Path() String name, @DioOptions() Options options);
 }

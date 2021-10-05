@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:country_dictionary_test/api/apiservice.dart';
 import 'package:country_dictionary_test/model/country.dart';
+import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
@@ -11,10 +12,12 @@ class Home extends StatelessWidget {
   ApiService apiService = Get.find();
   @override
   Widget build(BuildContext context) {
+    Options options = buildCacheOptions(Duration(days: 10), forceRefresh: true);
+    Get.put(options);
     return Scaffold(
       appBar: AppBar(title: const Text("Country Dictionary")),
       body: FutureBuilder<List<Country>>(
-        future: apiService.getCountries(),
+        future: apiService.getCountries(options),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Country>? country = snapshot.data;
@@ -51,6 +54,7 @@ class Home extends StatelessWidget {
           imageUrl:
               "https://www.countryflags.io/${country.alpha2Code}/flat/64.png",
           placeholder: (_, __) => const CircularProgressIndicator(),
+          errorWidget: (_, __, ___) => Icon(Icons.error),
         ),
         title: Text(
           country.name,

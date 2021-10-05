@@ -6,14 +6,16 @@ part of 'detail.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Detail _$DetailFromJson(Map<String, dynamic> json) => Detail(
-      json['name'] as String,
-      json['region'] as String,
-      json['subregion'] as String,
-      json['alpha2Code'] as String,
-      json['population'] as int,
-      json['demonym'] as String,
-    );
+Detail _$DetailFromJson(Map<String, dynamic> json) {
+  return Detail(
+    json['name'] as String,
+    json['region'] as String,
+    json['subregion'] as String,
+    json['alpha2Code'] as String,
+    json['population'] as int,
+    json['demonym'] as String,
+  );
+}
 
 Map<String, dynamic> _$DetailToJson(Detail instance) => <String, dynamic>{
       'name': instance.name,

@@ -38,6 +38,7 @@ dependencies:
   logger:
   cached_network_image:
   get:
+  dio_http_cache:
 
 dev_dependencies:
   flutter_test:

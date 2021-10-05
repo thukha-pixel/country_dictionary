@@ -3,6 +3,7 @@ import 'package:country_dictionary_test/api/apiservice.dart';
 import 'package:country_dictionary_test/model/detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:dio/dio.dart';
 
 class DetailScreen extends StatelessWidget {
   final ApiService apiService = Get.find();
@@ -10,10 +11,11 @@ class DetailScreen extends StatelessWidget {
   DetailScreen(this.country_name);
   @override
   Widget build(BuildContext context) {
+    Options options = Get.find();
     return Scaffold(
       appBar: AppBar(title: Text(country_name)),
       body: FutureBuilder<List<Detail>>(
-          future: apiService.getDetail(country_name),
+          future: apiService.getDetail(country_name, options),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               Detail detail = snapshot.data![0];
