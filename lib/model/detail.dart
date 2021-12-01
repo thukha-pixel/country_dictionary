@@ -9,9 +9,11 @@ class Detail {
   String alpha2Code;
   int population;
   String demonym;
+  List? borders;
 
   Detail(this.name, this.region, this.subregion, this.alpha2Code,
-      this.population, this.demonym);
+      this.population, this.demonym,
+      {this.borders});
 
   factory Detail.fromJson(Map<String, dynamic> json) => _$DetailFromJson(json);
 }

@@ -12,8 +12,10 @@ class Home extends StatelessWidget {
   ApiService apiService = Get.find();
   @override
   Widget build(BuildContext context) {
+    //from http-dio-cache
     Options options = buildCacheOptions(Duration(days: 10), forceRefresh: true);
     Get.put(options);
+
     return Scaffold(
       appBar: AppBar(title: const Text("Country Dictionary")),
       body: FutureBuilder<List<Country>>(
@@ -51,9 +53,14 @@ class Home extends StatelessWidget {
           Get.to(DetailScreen(country.name));
         },
         leading: CachedNetworkImage(
+          width: 50,
+          fit: BoxFit.fill,
           imageUrl:
-              "https://www.countryflags.io/${country.alpha2Code}/flat/64.png",
-          placeholder: (_, __) => const CircularProgressIndicator(),
+              // "https://www.countryflags.io/${country.alpha2Code}/flat/64.png",
+              "https://flagcdn.com/w320/${country.alpha2Code.toLowerCase()}.png",
+          placeholder: (_, __) => const CircularProgressIndicator(
+            strokeWidth: 5,
+          ),
           errorWidget: (_, __, ___) => Icon(Icons.error),
         ),
         title: Text(

@@ -35,18 +35,25 @@ class DetailScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20),
                   ),
                   Text(
-                    'population: ${detail.population}',
+                    'population:${detail.population}',
                     style: TextStyle(fontSize: 20),
                   ),
-                  Text(
-                    'demonym: ${detail.demonym}',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  CachedNetworkImage(
-                    imageUrl:
-                        'https://www.countryflags.io/${detail.alpha2Code}/flat/64.png',
-                    placeholder: (_, __) => CircularProgressIndicator(),
-                  ),
+                  detail.borders != null
+                      ? Text('border: ${detail.borders.toString()}')
+                      : const Text('There is no border'),
+                  // detail.borders != null ? for ( var i in detail.borders! ) Text(i.toString()) : Text('False'),
+                  //   for (int i = 0; i < detail.borders!.length; i++)
+                  //     Text(
+                  //       detail.borders![i],
+                  //       style: const TextStyle(fontSize: 20),
+                  //     ),
+                  // }
+
+                  // CachedNetworkImage(
+                  //   imageUrl:
+                  //       'https://www.countryflags.io/${detail.alpha2Code}/flat/64.png',
+                  //   placeholder: (_, __) => CircularProgressIndicator(),
+                  // ),
                 ],
               );
             }

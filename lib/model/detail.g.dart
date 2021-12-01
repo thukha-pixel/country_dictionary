@@ -14,6 +14,7 @@ Detail _$DetailFromJson(Map<String, dynamic> json) {
     json['alpha2Code'] as String,
     json['population'] as int,
     json['demonym'] as String,
+    borders: json['borders'] as List<dynamic>?,
   );
 }
 
@@ -24,4 +25,5 @@ Map<String, dynamic> _$DetailToJson(Detail instance) => <String, dynamic>{
       'alpha2Code': instance.alpha2Code,
       'population': instance.population,
       'demonym': instance.demonym,
+      'borders': instance.borders,
     };
